@@ -6,6 +6,9 @@ This project is a matrix server, independent of the applications used to connect
 Some options are:
 - [Element](https://element.io) (web/mobile/desktop) (better support for calls)
 - [FluffyChat](https://fluffychat.im) (web/mobile/desktop) (simpler, more traditional design)
+- [SchildiChat](https://schildi.chat) (web/android/desktop) (combines simplicity and features, but no iOS support)
+
+**If you're on Android, I recommend SchildiChat, and on iOS Element. Both are really similar.**
 
 Check this [clients list](https://matrix.org/clients) for other options.
 

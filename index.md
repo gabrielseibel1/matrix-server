@@ -2,7 +2,7 @@
 
 Pi Matrix Conduit is a Matrix homeserver running [Conduit](https://matrix.org/docs/projects/server/conduit).
 
-**Put simply, it is a computer running the [Matrix](https://matrix.org) communication protocol, so that people can connect to it and have a free, private, secure and decentralized instant messaaging experience!**
+**Put simply, it is a computer running the [Matrix](https://matrix.org) communication protocol, so that people can connect to it and have a free, private, secure and decentralized instant messaging experience!**
 
 Please check the **usage tutorial** [here](docs/usage.md) to get ready to chat, or optionally, if you're already familiar with the Matrix protocol, simply join the server using your matrix client of choice :)
 

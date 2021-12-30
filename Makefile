@@ -7,7 +7,7 @@ INDEX_HTML = index.html
 USAGE_HTML = docs/usage.html
 IMAGES = docs/img
 
-all : index docs
+compile : index docs
 
 index : index.md
 	python3 -m markdown index.md -f ${INDEX_HTML}
@@ -27,3 +27,6 @@ install : docs index nginx stickerpicker ${CONTENT_ROOT}
 	cp -f  nginx/pimatrixconduit.xyz ${SITE_AVAILABLE}
 	cp -f  ${SITE_AVAILABLE} ${SITE_ENABLED}
 	cp -rf ${STICKERS} ${CONTENT_ROOT}/${STICKERS}
+
+${CONTENT_ROOT} :
+	mkdir -p ${CONTENT_ROOT}

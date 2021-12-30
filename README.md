@@ -4,7 +4,7 @@ A matrix server using [Conduit](https://github.com/timokoesters/conduit), hosted
 
 ## Simple Usage
 
-Please to check the usage tutorial [here](docs/usage.html) to get ready to chat :D
+Please to check the usage tutorial [here](docs/usage.md) to get ready to chat :D
 
 ## Installation (development)
 

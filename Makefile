@@ -25,5 +25,6 @@ install : docs index nginx stickerpicker ${CONTENT_ROOT}
 	mv ${IMAGES}     ${CONTENT_ROOT}/${IMAGES}
 	mv nginx/nginx.conf /etc/nginx/nginx.conf
 	mv nginx/pimatrixconduit.xyz ${SITE_AVAILABLE}
+	rm ${SITE_ENABLED} ${CONTENT_ROOT}/${STICKERS} || true # fail silently
 	ln -s ${SITE_AVAILABLE} ${SITE_ENABLED}
 	ln -s ${STICKERS} ${CONTENT_ROOT}/${STICKERS}

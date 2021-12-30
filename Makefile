@@ -18,13 +18,12 @@ usage : docs/usage.md
 	python3 -m markdown docs/usage.md -f ${USAGE_HTML}
 
 install : docs index nginx stickerpicker ${CONTENT_ROOT}
-	find . -type f -exec sed -i 's/.md/.html/g' {} \; # replace md references with html ones
-	mkdir -p ${CONTENT_ROOT}/docs
-	mv ${INDEX_HTML} ${CONTENT_ROOT}/${INDEX_HTML}
-	mv ${USAGE_HTML} ${CONTENT_ROOT}/${USAGE_HTML}
-	mv ${IMAGES}     ${CONTENT_ROOT}/${IMAGES}
-	mv nginx/nginx.conf /etc/nginx/nginx.conf
-	mv nginx/pimatrixconduit.xyz ${SITE_AVAILABLE}
-	rm ${SITE_ENABLED} ${CONTENT_ROOT}/${STICKERS} || true # fail silently
-	ln -s ${SITE_AVAILABLE} ${SITE_ENABLED}
-	ln -s ${STICKERS} ${CONTENT_ROOT}/${STICKERS}
+	find . -type f -exec sed -i 's/.md/.html/g' {} \; # replace md refs for html
+	mkdir  -p ${CONTENT_ROOT}/docs
+	cp -f  ${INDEX_HTML} ${CONTENT_ROOT}/${INDEX_HTML}
+	cp -f  ${USAGE_HTML} ${CONTENT_ROOT}/${USAGE_HTML}
+	cp -rf ${IMAGES}     ${CONTENT_ROOT}/${IMAGES}
+	cp -f  nginx/nginx.conf /etc/nginx/nginx.conf
+	cp -f  nginx/pimatrixconduit.xyz ${SITE_AVAILABLE}
+	cp -f  ${SITE_AVAILABLE} ${SITE_ENABLED}
+	cp -rf ${STICKERS} ${CONTENT_ROOT}/${STICKERS}

@@ -19,6 +19,7 @@ usage : docs/usage.md
 
 install : docs index nginx stickerpicker ${CONTENT_ROOT}
 	find . -type f -exec sed -i 's/.md/.html/g' {} \; # replace md references with html ones
+	mkdir -p ${CONTENT_ROOT}/docs
 	mv ${INDEX_HTML} ${CONTENT_ROOT}/${INDEX_HTML}
 	mv ${USAGE_HTML} ${CONTENT_ROOT}/${USAGE_HTML}
 	mv ${IMAGES}     ${CONTENT_ROOT}/${IMAGES}

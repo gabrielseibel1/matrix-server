@@ -5,6 +5,7 @@ SITE_ENABLED = /etc/nginx/sites-enabled/${SITE}
 STICKERS = stickerpicker/web
 INDEX_HTML = index.html
 USAGE_HTML = docs/usage.html
+IMAGES = docs/img
 
 all : index docs
 
@@ -18,8 +19,9 @@ usage : docs/usage.md
 
 install : docs index nginx stickerpicker ${CONTENT_ROOT}
 	find . -type f -exec sed -i 's/.md/.html/g' {} \; # replace md references with html ones
-	mv ${INDEX_HTML} ${CONTENT_ROOT}
-	mv ${USAGE_HTML} ${CONTENT_ROOT}
+	mv ${INDEX_HTML} ${CONTENT_ROOT}/${INDEX_HTML}
+	mv ${USAGE_HTML} ${CONTENT_ROOT}/${USAGE_HTML}
+	mv ${IMAGES}     ${CONTENT_ROOT}/${IMAGES}
 	mv nginx/nginx.conf /etc/nginx/nginx.conf
 	mv nginx/pimatrixconduit.xyz ${SITE_AVAILABLE}
 	ln -s ${SITE_AVAILABLE} ${SITE_ENABLED}

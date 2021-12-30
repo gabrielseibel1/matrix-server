@@ -33,4 +33,4 @@ install : nginx stickerpicker nginx_installed
 
 .PHONY : nginx_installed
 nginx_installed :
-	_nginx -v
+	nginx -v

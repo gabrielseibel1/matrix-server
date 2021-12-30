@@ -13,6 +13,8 @@ You may ignore this section if you're a regular user.
 If you're a developer running this project, you can build and install it as follows:
 
 ```
+git submodule init
+git submodule update
 make # compiles some files (e.g. MD -> HTML)
 make install # moves files for webserver expectations
 ```

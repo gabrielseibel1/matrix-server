@@ -12,26 +12,25 @@ compile : index docs
 
 index : index.md
 	python3 -m markdown index.md -f ${INDEX_HTML}
+	sed -i 's/.md/.html/g' ${INDEX_HTML}
 
-docs : usage
+docs : usage # separate rule to add more than 'usage'
 
 usage : docs/usage.md
 	python3 -m markdown docs/usage.md -f ${USAGE_HTML}
+	sed -i 's/.md/.html/g' ${USAGE_HTML}
 
-install : docs index nginx stickerpicker ${CONTENT_ROOT}
-	find . -type f -exec sed -i 's/.md/.html/g' {} \; # replace md refs for html
-	mkdir  -p ${CONTENT_ROOT}/docs
-	cp -rf --parents  \
+install : nginx stickerpicker nginx_installed
+	cp -rf --parents \
 		${INDEX_HTML} \
-		${USAGE_HTML} \
-		${IMAGES} \
-		${STICKERS} \
-		${CONTENT_ROOT}
-	pushd nginx
-	cp -f  --parents ${SITE} ${SITES_AVAILABLE}
+    ${USAGE_HTML} \
+    ${IMAGES} \
+    ${STICKERS} \
+    ${CONTENT_ROOT}
+	cp -i  nginx/nginx.conf ${ETC_NGINX}
+	cp -f  nginx/${SITE} ${SITES_AVAILABLE}
 	ln -fs ${SITES_AVAILABLE}/${SITE} ${SITES_ENABLED}/${SITE}
-	cp -i  --parents nginx.conf ${ETC_NGINX}
-	popd
 
-${CONTENT_ROOT} :
-	mkdir -p ${CONTENT_ROOT}
+.PHONY nginx_installed
+nginx_installed :
+	nginx --version

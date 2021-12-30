@@ -27,7 +27,7 @@ install : docs index nginx stickerpicker ${CONTENT_ROOT}
 		${IMAGES} \
 		${STICKERS} \
 		${CONTENT_ROOT}
-	cp -f  --parents nginx/${SITE} ${SITES_AVAILEBLE}
+	cp -f  --parents nginx/${SITE} ${SITES_AVAILABLE}
 	cp -f  --parents nginx/${SITE} ${SITES_ENABLED}
 	cp -i  --parents nginx/nginx.conf ${ETC_NGINX}/nginx.conf
 

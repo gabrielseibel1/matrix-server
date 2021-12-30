@@ -31,6 +31,6 @@ install : nginx stickerpicker nginx_installed
 	cp -f  nginx/${SITE} ${SITES_AVAILABLE}
 	ln -fs ${SITES_AVAILABLE}/${SITE} ${SITES_ENABLED}/${SITE}
 
-.PHONY nginx_installed
+.PHONY : nginx_installed
 nginx_installed :
 	nginx --version

@@ -1,6 +1,6 @@
 # Usage
 
-This page explains how to get started with using Matrix with [https://pimatrixconduit.xyz](https://pimatrixconduit.xyz)
+This page explains how to get started with using Matrix with [https://pimatrixconduit.xyz](https://pimatrixconduit.xyz).
 
 ## Theory
 
@@ -29,7 +29,7 @@ For the sake of simplicity, the sections below will ilustrate a user sign-**up**
 
 ## Element
 
-After dowloading the app, hit get started.
+After dowloading the app, hit "Get started".
 
 ![](element_get_started.jpeg)
 

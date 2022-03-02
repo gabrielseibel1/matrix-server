@@ -9,8 +9,15 @@ server {
 
     root /var/www/pimatrixconduit.xyz;
 
-    location / {
+    index index.html;
 
+    location / {
+    }
+
+    location /docs/ {
+    }
+
+    location /docs/img {
     }
 
     location /_matrix/ {

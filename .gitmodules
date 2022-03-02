@@ -1,3 +1,6 @@
 [submodule "stickerpicker"]
 	path = stickerpicker
 	url = https://github.com/gabrielseibel1/stickerpicker
+[submodule "conduit"]
+	path = conduit
+	url = https://gitlab.com/famedly/conduit

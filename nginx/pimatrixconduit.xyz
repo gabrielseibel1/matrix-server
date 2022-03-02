@@ -7,7 +7,7 @@ server {
     server_name pimatrixconduit.xyz;
     merge_slashes off;
 
-    root /var/www/pimatrixconduit;
+    root /var/www/pimatrixconduit.xyz;
 
     location / {
 

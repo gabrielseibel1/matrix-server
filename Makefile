@@ -1,3 +1,6 @@
+.ONESHELL :
+SHELL = /usr/bin/bash
+
 CONTENT_ROOT = /var/www/pimatrixconduit.xyz
 ETC_NGINX = /etc/nginx
 SITE = pimatrixconduit.xyz
@@ -28,7 +31,8 @@ install : nginx stickerpicker nginx_installed
     		${CONTENT_ROOT}
 	cp -i  nginx/nginx.conf ${ETC_NGINX}/
 	cp -f  nginx/${SITE} ${ETC_NGINX}/sites-enabled/ 
-	apt install -y libclang-dev build-essential
+	apt install -y libclang-dev build-essential cargo
+	cd conduit
 	cargo build --release
 	adduser --system conduit --no-create-home || true
 	cp -f conduit.service /etc/systemd/system/conduit.service
@@ -43,6 +47,7 @@ install : nginx stickerpicker nginx_installed
 	systemctl enable conduit
 	curl https://your.server.name/_matrix/client/versions
 	curl https://your.server.name:8448/_matrix/client/versions
+	cd ..
 
 .PHONY : nginx_installed
 nginx_installed :

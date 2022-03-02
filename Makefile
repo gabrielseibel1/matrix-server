@@ -1,8 +1,6 @@
-CONTENT_ROOT = /var/www/pimatrixconduit
+CONTENT_ROOT = /var/www/pimatrixconduit.xyz
 ETC_NGINX = /etc/nginx
 SITE = pimatrixconduit.xyz
-SITES_AVAILABLE = ${ETC_NGINX}/sites-available
-SITES_ENABLED = ${ETC_NGINX}/sites-enabled
 STICKERS = stickerpicker/web
 INDEX_HTML = index.html
 USAGE_HTML = docs/usage.html
@@ -21,15 +19,15 @@ usage : docs/usage.md
 	sed -i 's/.md/.html/g' ${USAGE_HTML}
 
 install : nginx stickerpicker nginx_installed
+	test ! -d ${CONTENT_ROOT} && mkdir -p ${CONTENT_ROOT} || true
 	cp -rf --parents \
 		${INDEX_HTML} \
-    ${USAGE_HTML} \
-    ${IMAGES} \
-    ${STICKERS} \
-    ${CONTENT_ROOT}
-	cp -i  nginx/nginx.conf ${ETC_NGINX}
-	cp -f  nginx/${SITE} ${SITES_AVAILABLE}
-	ln -fs ${SITES_AVAILABLE}/${SITE} ${SITES_ENABLED}/${SITE}
+		${USAGE_HTML} \
+    		${IMAGES} \
+    		${STICKERS} \
+    		${CONTENT_ROOT}
+	cp -i  nginx/nginx.conf ${ETC_NGINX}/
+	cp -f  nginx/${SITE} ${ETC_NGINX}/sites-enabled/
 
 .PHONY : nginx_installed
 nginx_installed :

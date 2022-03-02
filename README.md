@@ -15,6 +15,8 @@ If you're a developer running this project, you can build and install it as foll
 ```
 git submodule init
 git submodule update
+sudo apt install python3-markdown
 make # compiles some files (e.g. MD -> HTML)
 make install # moves files for webserver expectations
+sudo service nginx reload
 ```

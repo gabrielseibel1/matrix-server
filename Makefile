@@ -6,7 +6,7 @@ INDEX_HTML = index.html
 USAGE_HTML = docs/usage.html
 IMAGES = docs/img
 
-compile : index docs
+compile_html : index docs
 
 index : index.md
 	python3 -m markdown index.md -f ${INDEX_HTML}
@@ -27,7 +27,22 @@ install : nginx stickerpicker nginx_installed
     		${STICKERS} \
     		${CONTENT_ROOT}
 	cp -i  nginx/nginx.conf ${ETC_NGINX}/
-	cp -f  nginx/${SITE} ${ETC_NGINX}/sites-enabled/
+	cp -f  nginx/${SITE} ${ETC_NGINX}/sites-enabled/ 
+	apt install -y libclang-dev build-essential
+	cargo build --release
+	adduser --system conduit --no-create-home || true
+	cp -f conduit.service /etc/systemd/system/conduit.service
+	systemctl daemon-reload
+	cp -f conduit.toml /etc/matrix-conduit/conduit.toml
+	chown -R conduit:nogroup /etc/matrix-conduit
+	mkdir -p /var/lib/matrix-conduit/
+	chown -R conduit:nogroup /var/lib/matrix-conduit/
+	chmod 700 /var/lib/matrix-conduit/
+	systemctl reload nginx
+	systemctl start conduit
+	systemctl enable conduit
+	curl https://your.server.name/_matrix/client/versions
+	curl https://your.server.name:8448/_matrix/client/versions
 
 .PHONY : nginx_installed
 nginx_installed :
